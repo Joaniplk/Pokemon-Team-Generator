@@ -170,35 +170,35 @@ function App() {
     }
 });
 
-const [pokeData2, setPokeData2] = React.useState({
+const [pokeData2, setPokeData2] = React.useState<PokeData>({
   name:"",
   sprites: {
     front_default: ""
   }
 });
 
-const [pokeData3, setPokeData3] = React.useState({
+const [pokeData3, setPokeData3] = React.useState<PokeData>({
   name:"",
   sprites: {
     front_default: ""
   }
 });
 
-const [pokeData4, setPokeData4] = React.useState({
+const [pokeData4, setPokeData4] = React.useState<PokeData>({
   name:"",
   sprites: {
     front_default: ""
   }
 });
 
-const [pokeData5, setPokeData5] = React.useState({
+const [pokeData5, setPokeData5] = React.useState<PokeData>({
   name:"",
   sprites: {
     front_default: ""
   }
 });
 
-const [pokeData6, setPokeData6] = React.useState({
+const [pokeData6, setPokeData6] = React.useState<PokeData>({
   name:"",
   sprites: {
     front_default: ""
