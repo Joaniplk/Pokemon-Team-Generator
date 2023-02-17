@@ -1,9 +1,10 @@
 import React from 'react';
 import Axios from 'axios';
 import PokeData from './types/interfaces';
+import { Pokemon } from './components/Pokemon';
 import './App.css';
 
-function App() {
+function App():JSX.Element {
   const pokemons:string[] = [
   "bulbasaur",
   "ivysaur",
@@ -163,65 +164,39 @@ function App() {
   let pokemon5:string = pokemons[Math.floor(Math.random() * pokemons.length)];
   let pokemon6:string = pokemons[Math.floor(Math.random() * pokemons.length)];
 
-  const [pokeData1, setPokeData1] = React.useState<PokeData>({
+  const stateInfo = {
     name:"",
     sprites: {
       front_default: ""
     }
-});
+  };
 
-const [pokeData2, setPokeData2] = React.useState<PokeData>({
-  name:"",
-  sprites: {
-    front_default: ""
-  }
-});
+  const [pokeData1, setPokeData1] = React.useState<PokeData>(stateInfo);
+  const [pokeData2, setPokeData2] = React.useState<PokeData>(stateInfo);
+  const [pokeData3, setPokeData3] = React.useState<PokeData>(stateInfo);
+  const [pokeData4, setPokeData4] = React.useState<PokeData>(stateInfo);
+  const [pokeData5, setPokeData5] = React.useState<PokeData>(stateInfo);
+  const [pokeData6, setPokeData6] = React.useState<PokeData>(stateInfo);
 
-const [pokeData3, setPokeData3] = React.useState<PokeData>({
-  name:"",
-  sprites: {
-    front_default: ""
-  }
-});
-
-const [pokeData4, setPokeData4] = React.useState<PokeData>({
-  name:"",
-  sprites: {
-    front_default: ""
-  }
-});
-
-const [pokeData5, setPokeData5] = React.useState<PokeData>({
-  name:"",
-  sprites: {
-    front_default: ""
-  }
-});
-
-const [pokeData6, setPokeData6] = React.useState<PokeData>({
-  name:"",
-  sprites: {
-    front_default: ""
-  }
-});
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
   function fetchData(pokemon1: string,pokemon2: string,pokemon3: string,pokemon4: string,pokemon5: string,pokemon6: string,):void{
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon1}/`).then((res) => {
+      Axios.get(apiUrl + pokemon1).then((res) => {
         setPokeData1(res.data);
       });
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon2}/`).then((res) => {
+      Axios.get(apiUrl + pokemon2).then((res) => {
         setPokeData2(res.data);
       });
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon3}/`).then((res) => {
+      Axios.get(apiUrl + pokemon3).then((res) => {
         setPokeData3(res.data);
       });
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon4}/`).then((res) => {
+      Axios.get(apiUrl + pokemon4).then((res) => {
         setPokeData4(res.data);
       });
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon5}/`).then((res) => {
+      Axios.get(apiUrl + pokemon5).then((res) => {
         setPokeData5(res.data);
       });
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon6}/`).then((res) => {
+      Axios.get(apiUrl + pokemon6).then((res) => {
         setPokeData6(res.data);
       });
   }
@@ -235,36 +210,12 @@ const [pokeData6, setPokeData6] = React.useState<PokeData>({
       </header>
         <main className='poketeam'>
           <div className='pokemon-container'>
-            <a href={`https://en.wikipedia.org/wiki/${pokeData1.name}`}>
-              <div className='image-div'>
-                <img className='pokemon-image' alt={pokeData1.name} src={pokeData1.sprites.front_default}></img>
-              </div>
-            </a>
-            <a href={`https://en.wikipedia.org/wiki/${pokeData2.name}`}>
-              <div className='image-div'>
-                <img className='pokemon-image' alt={pokeData2.name} src={pokeData2.sprites.front_default}></img>
-              </div>
-            </a>
-            <a href={`https://en.wikipedia.org/wiki/${pokeData3.name}`}>
-              <div className='image-div'>
-                <img className='pokemon-image' alt={pokeData3.name} src={pokeData3.sprites.front_default}></img>
-              </div>
-            </a>
-            <a href={`https://en.wikipedia.org/wiki/${pokeData4.name}`}>
-              <div className='image-div'>
-                <img className='pokemon-image' alt={pokeData4.name} src={pokeData4.sprites.front_default}></img>
-              </div>
-            </a>
-            <a href={`https://en.wikipedia.org/wiki/${pokeData5.name}`}>
-              <div className='image-div'>
-                <img className='pokemon-image' alt={pokeData5.name} src={pokeData5.sprites.front_default}></img>
-              </div>
-            </a>
-            <a href={`https://en.wikipedia.org/wiki/${pokeData6.name}`}>
-              <div className='image-div'>
-                <img className='pokemon-image' alt={pokeData6.name} src={pokeData6.sprites.front_default}></img>
-              </div>
-            </a>
+            <Pokemon name={pokeData1.name} url={pokeData1.sprites.front_default} />
+            <Pokemon name={pokeData2.name} url={pokeData2.sprites.front_default} />
+            <Pokemon name={pokeData3.name} url={pokeData3.sprites.front_default} />
+            <Pokemon name={pokeData4.name} url={pokeData4.sprites.front_default} />
+            <Pokemon name={pokeData5.name} url={pokeData5.sprites.front_default} />
+            <Pokemon name={pokeData6.name} url={pokeData6.sprites.front_default} />
           </div>
         </main>
         <br />
