@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import PokeData from './types/interfaces';
-import { Pokemon } from './components/Pokemon';
+import { Pokemon } from './Pokemon';
 import './App.css';
 
 function App():JSX.Element {
